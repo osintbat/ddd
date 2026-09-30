@@ -1,7 +1,7 @@
 # brokebase.com — promo video
 
 Remotion promo for brokebase.com (1920 × 1080, 60 fps, 17.5 s, with an original soundtrack).
-It uses the site's own look (#131119 background, #a38ee3 purple, Poppins, "BROKEBASE" watermark,
+It uses a modern glassmorphism look (translucent panels, backdrop blur, no borders, outlines or glows) on the site's palette (#131119 background, #a38ee3 purple, Poppins, "BROKEBASE" watermark,
 ScriptBlox / Rscripts cards) and filled SVG icons: **reicon** (`*-filled`, via Iconify) for the UI and
 **Simple Icons** for brand glyphs (Roblox).
 

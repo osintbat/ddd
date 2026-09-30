@@ -31,7 +31,7 @@ const Background: React.FC<{ t: number }> = ({ t }) => {
   const rows = Array.from({ length: 16 });
   const drift = t * 26;
   // soft purple glow that wanders between scenes
-  const gx = lerp(960, 1300, (Math.sin(t * 0.6) + 1) / 2);
+  const gx = lerp(700, 1250, (Math.sin(t * 0.6) + 1) / 2);
   const gy = lerp(420, 640, (Math.cos(t * 0.45) + 1) / 2);
   const intro = tw(t, 0, 0.8);
   return (
@@ -47,9 +47,14 @@ const Background: React.FC<{ t: number }> = ({ t }) => {
           }}>{"BROKEBASE ".repeat(9)}</div>
         ))}
       </div>
+      {/* soft colour fields behind the glass (backdrop only, no element glows) */}
       <div style={{
-        position: "absolute", left: gx - 700, top: gy - 500, width: 1400, height: 1000, opacity: 0.55 * intro,
-        background: "radial-gradient(ellipse 700px 500px at 50% 50%, rgba(163,142,227,0.16), rgba(163,142,227,0.05) 45%, rgba(163,142,227,0) 100%)",
+        position: "absolute", left: gx - 800, top: gy - 560, width: 1600, height: 1120, opacity: intro,
+        background: "radial-gradient(ellipse 800px 560px at 50% 50%, rgba(123,97,214,0.28), rgba(123,97,214,0.08) 50%, rgba(123,97,214,0) 100%)",
+      }} />
+      <div style={{
+        position: "absolute", left: 1920 - gx - 700, top: 1080 - gy - 420, width: 1400, height: 840, opacity: intro,
+        background: "radial-gradient(ellipse 700px 420px at 50% 50%, rgba(64,86,196,0.2), rgba(64,86,196,0.05) 50%, rgba(64,86,196,0) 100%)",
       }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 1150px 700px at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)" }} />
     </AbsoluteFill>

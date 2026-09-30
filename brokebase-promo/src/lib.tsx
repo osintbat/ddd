@@ -11,12 +11,6 @@ export const C = {
   purple: "#a38ee3",
   purpleDeep: "#6d5bb8",
   icon: "#4c4b4f",
-  border: "#302e38",
-  cardTop: "#1b1922",
-  cardBottom: "#16161d",
-  btnTop: "#2e2a3a",
-  btnMid: "#24212e",
-  glass: "rgba(255,255,255,0.06)",
 };
 
 export const FPS = 60;
@@ -63,11 +57,11 @@ export function mixHex(a: string, b: string, p: number): string {
   return `rgb(${m[0]}, ${m[1]}, ${m[2]})`;
 }
 
-/** Scene exit: fade + slight zoom + blur over the last `len` seconds before `end`. */
+/** Scene exit: fade + slight zoom over the last `len` seconds before `end`. */
 export function exitStyle(t: number, end: number, len = 0.28): React.CSSProperties {
   const p = tw(t, end - len, end, "in");
   if (p <= 0) return {};
-  return { opacity: 1 - p, transform: `scale(${1 + 0.06 * p})`, filter: `blur(${10 * p}px)` };
+  return { opacity: 1 - p, transform: `scale(${1 + 0.05 * p})` };
 }
 
 /** Text that blurs + slides in, word by word. */
@@ -101,5 +95,17 @@ export const At: React.FC<{ x: number; y: number; style?: React.CSSProperties; c
   </div>
 );
 
-export const cardBg = `linear-gradient(180deg, ${C.cardTop}, ${C.cardBottom})`;
-export const btnBg = `linear-gradient(180deg, ${C.btnTop} 0%, ${C.btnMid} 50%, ${C.btnTop} 100%)`;
+/**
+ * Glassmorphism surface (like the site's "Scripts" pill): translucent white fill + backdrop blur.
+ * No border, outline, shadow or glow. Put it on the element that animates opacity, never below a
+ * parent with opacity/filter, or the backdrop blur has nothing to sample.
+ */
+export function glass(alpha = 0.07, tint?: string): React.CSSProperties {
+  return {
+    background: tint ?? `rgba(255,255,255,${alpha})`,
+    backdropFilter: "blur(22px) saturate(150%)",
+    WebkitBackdropFilter: "blur(22px) saturate(150%)",
+    border: "none",
+    outline: "none",
+  };
+}

@@ -35,8 +35,7 @@ export const IconWall: React.FC<{ t: number; dur: number }> = ({ t }) => {
               position: "absolute", transform: `translate(-50%, -50%) scale(${s * (1 - 0.75 * pull)}) rotate(${(1 - s) * -20 + pull * 90}deg)`,
               filter: pull > 0 ? `blur(${pull * 8}px)` : undefined,
             }}>
-              <Icon name={name} size={brand ? ICON * 0.86 : ICON} color={mixHex("#78787c", C.purple, wave)}
-                style={{ filter: wave > 0 ? `drop-shadow(0 0 ${22 * wave}px rgba(163,142,227,${0.7 * wave}))` : undefined }} />
+              <Icon name={name} size={brand ? ICON * 0.86 : ICON} color={mixHex("#78787c", C.purple, wave)} />
             </div>
             <div style={{
               position: "absolute", top: ICON / 2 + 30, left: 0, transform: "translateX(-50%)", whiteSpace: "nowrap",
